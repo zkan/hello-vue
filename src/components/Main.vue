@@ -2,7 +2,8 @@
   <div class="main">
     {{text}}
     <ul>
-      <li v-for="todo in todos" v-html="todo.text" :key="todo.time">
+      <li v-for="todo in todos" :key="todo.time">
+        {{todo.text | capitalize }}
       </li>
     </ul>
   </div>
@@ -11,6 +12,11 @@
 <script>
 export default {
   name: 'Main',
+  filters: {
+    capitalize (val) {
+      return val.toUpperCase()
+    }
+  },
   data () {
     return {
       text: 'Hello World',
