@@ -2,8 +2,7 @@
   <div class="main">
     {{text}}
     <ul>
-      <li v-for="todo in todos" :key="todo.time">
-        {{todo.text}}
+      <li v-for="todo in todos" v-html="todo.text" :key="todo.time">
       </li>
     </ul>
   </div>
