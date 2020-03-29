@@ -1,13 +1,14 @@
 <template>
   <div class="main">
-    {{text}}
+    {{ text }}
     <ul>
       <li v-for="todo in todos" :key="todo.time">
-        <div v-if="todo.completed == false">{{todo.text | capitalize }}</div>
-        <div v-else-if="todo.completed == true">{{todo.text | capitalize }} (Completed)</div>
-        <div v-else>{{todo.text | capitalize }}</div>
+        <div v-if="todo.completed == false">{{ todo.text | capitalize }}</div>
+        <div v-else-if="todo.completed == true">{{ todo.text | capitalize }} (Completed)</div>
+        <div v-else>{{ todo.text | capitalize }}</div>
       </li>
     </ul>
+    <input type="text" v-model="text">
   </div>
 </template>
 
