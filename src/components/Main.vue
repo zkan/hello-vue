@@ -9,12 +9,18 @@
       </li>
     </ul>
     <input type="text" v-model="text">
+    <button @click="save()">Save</button>
   </div>
 </template>
 
 <script>
 export default {
   name: 'Main',
+  methods: {
+    save() {
+      console.log('save')
+    }
+  },
   filters: {
     capitalize (val) {
       return val.toUpperCase()
