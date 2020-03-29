@@ -1,9 +1,6 @@
 <template>
   <div class="main">
-    {{ text }}
-    <TodoList :todoItems="getSortedItems" />
-    <input type="text" v-model="text">
-    <button @click="save()">Save</button>
+    <TodoList :todoItems="getSortedItems" @save="addTodoItem" />
   </div>
 </template>
 
@@ -32,13 +29,16 @@ export default {
     }
   },
   methods: {
-    save() {
-      console.log('save')
+    addTodoItem(text) {
+      this.todos.push({
+        text,
+        time: Date.now(),
+        completed: false
+      })
     }
   },
   data () {
     return {
-      text: 'Hello World',
       todos: [
         {
           text: '<strong>Todo1</strong>',
