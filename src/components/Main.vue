@@ -1,34 +1,39 @@
 <template>
   <div class="main">
     {{ text }}
-    <ul>
-      <li v-for="todo in sortItems" :key="todo.time">
-        <div v-if="todo.completed == false">{{ todo.text | capitalize }}</div>
-        <div v-else-if="todo.completed == true">{{ todo.text | capitalize }} (Completed)</div>
-        <div v-else>{{ todo.text | capitalize }}</div>
-      </li>
-    </ul>
+    <TodoList :todoItems="getSortedItems" />
     <input type="text" v-model="text">
     <button @click="save()">Save</button>
   </div>
 </template>
 
 <script>
+import TodoList from './TodoList.vue'
+
 export default {
   name: 'Main',
+  components: {
+    TodoList
+  },
+  watch: {
+    todos(oldVal, newVal) {
+      console.log(oldVal, newVal)
+    }
+  },
+  beforeCreate() {
+    console.log('beforeCreate')
+  },
+  mounted() {
+    console.log('mounted')
+  },
   computed: {
-    sortItems() {
+    getSortedItems() {
       return [...this.todos].sort((a, b) => (b.time - a.time))
     }
   },
   methods: {
     save() {
       console.log('save')
-    }
-  },
-  filters: {
-    capitalize (val) {
-      return val.toUpperCase()
     }
   },
   data () {
