@@ -1,15 +1,21 @@
 <template>
   <div class="main">
+    <Alert>
+      <h1 slot="header">Alert Here</h1>
+      <h2 slot="text">Alert Here</h2>
+    </Alert>
     <TodoList :todoItems="getSortedItems" @save="addTodoItem" />
   </div>
 </template>
 
 <script>
+import Alert from './Alert'
 import TodoList from './TodoList'
 
 export default {
   name: 'Main',
   components: {
+    Alert,
     TodoList
   },
   watch: {
